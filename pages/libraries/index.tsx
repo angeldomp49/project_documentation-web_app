@@ -1,7 +1,7 @@
 
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import DependencyTab from '../../components/DependencyTab';
+import DependencyTab from '../../components/dependency/DependencyTab';
 import { Tab } from '../../components/symbols/Tab';
 import { Cl, Cr } from '../../components/symbols/chevrons';
 import { Arrow2 } from '../../components/symbols/arrows';
@@ -24,8 +24,8 @@ export default function Libraries(){
             <DependencyTab 
                 infoDependency={{
                     groupId: 'org.makechtec',
-                    artifactId: 'template_info',
-                    version: '1.0.0'
+                    artifactId: 'path_generator',
+                    version: '1.0.1'
                 }}
                 />
             <br/>
