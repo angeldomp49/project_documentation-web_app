@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import {Translator} from "../app/ui/langs/translator/Translator";
+import {Translator} from "../app/ui/internationalization/translator/Translator";
 import { Customer } from "../app/ui/commons/types/Customer";
 
 export default function CustomersTable(){
