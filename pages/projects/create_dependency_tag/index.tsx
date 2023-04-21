@@ -1,8 +1,8 @@
 import { GetServerSideProps } from 'next';
 import React, { useState } from 'react'
-import { API_BASE_URL } from '../../../config/config';
+import { API_BASE_URL } from '../../../app/ui/config/config';
 import { IdGenerator } from '@makechtec/randomkey';
-import NavMenu from '../../../components/menus/NavMenu';
+import NavMenu from '../../../app/ui/commons/components/menus/NavMenu';
 
 
 const index = ({data}: {data: ApiResponse}) => {

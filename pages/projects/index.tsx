@@ -1,12 +1,12 @@
 
 import { GetServerSideProps } from 'next';
 import React from 'react'
-import { API_BASE_URL } from '../../config/config';
+import { API_BASE_URL } from '../../app/ui/config/config';
 import { ProjectInfo } from './ProjectInfo';
 import { ReleaseHistory } from './ReleaseHistory';
 import { IdGenerator } from '@makechtec/randomkey';
 import DependencyTab from './DependencyTab';
-import NavMenu from '../../components/menus/NavMenu';
+import NavMenu from '../../app/ui/commons/components/menus/NavMenu';
 
 
 const Projects = ({data}:{data: ApiResponse}) => {

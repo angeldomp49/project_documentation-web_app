@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
-import { API_BASE_URL } from '../config/config';
+import { API_BASE_URL } from '../app/ui/config/config';
 import { IdGenerator } from '@makechtec/randomkey';
 
 export default function Home() {

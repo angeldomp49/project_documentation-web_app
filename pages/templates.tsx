@@ -1,7 +1,7 @@
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { Tab } from "../components/symbols/Tab";
-import { Cl, Cr } from "../components/symbols/chevrons";
+import { Tab } from "../app/ui/commons/components/symbols/Tab";
+import { Cl, Cr } from "../app/ui/commons/components/symbols/chevrons";
 
 export const Templates = () => {
     return(

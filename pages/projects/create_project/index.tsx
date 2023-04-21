@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'
-import { API_BASE_URL } from '../../../config/config'
-import NavMenu from '../../../components/menus/NavMenu';
+import { API_BASE_URL } from '../../../app/ui/config/config'
+import NavMenu from '../../../app/ui/commons/components/menus/NavMenu';
 
 
 const index = ({}: {}) => {

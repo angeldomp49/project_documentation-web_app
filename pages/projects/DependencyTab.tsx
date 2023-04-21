@@ -4,7 +4,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import { MDBTabs, MDBTabsLink, MDBTabsItem, MDBTabsContent, MDBTabsPane } from 'mdb-react-ui-kit';
 import { useState } from 'react';
 import { DependencyTagInfo } from './ProjectInfo';
-import { Tab } from '../../components/symbols/Tab';
+import { Tab } from '../../app/ui/commons/components/symbols/Tab';
 
 export default function DependencyTab({ infoDependency } : { infoDependency: DependencyTagInfo}){
 

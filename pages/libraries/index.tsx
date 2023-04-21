@@ -1,11 +1,11 @@
 
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import DependencyTab from '../../components/dependency/DependencyTab';
-import { Tab } from '../../components/symbols/Tab';
-import { Cl, Cr } from '../../components/symbols/chevrons';
-import { Arrow2 } from '../../components/symbols/arrows';
-import { Brl, Brr } from '../../components/symbols/curlyBrackets';
+import DependencyTab from '../../app/ui/commons/components/dependency/DependencyTab';
+import { Tab } from '../../app/ui/commons/components/symbols/Tab';
+import { Cl, Cr } from '../../app/ui/commons/components/symbols/chevrons';
+import { Arrow2 } from '../../app/ui/commons/components/symbols/arrows';
+import { Brl, Brr } from '../../app/ui/commons/components/symbols/curlyBrackets';
 
 export default function Libraries(){
 
