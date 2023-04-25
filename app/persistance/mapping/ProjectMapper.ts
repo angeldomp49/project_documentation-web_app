@@ -7,6 +7,10 @@ export class ProjectMapper{
         return [];
     }
 
+    async allHydrated(): Promise<ProjectHydratedBean[]>{
+        return [];
+    }
+
      async hydratedByName(name: string): Promise<ProjectHydratedBean>{
         return null;
     }

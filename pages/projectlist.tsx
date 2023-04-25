@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ProjectSectionInfo } from '../app/ui/components/project/projectSection/ProjectSectionInfo';
 import ProjectSectionUI from '../app/ui/components/project/projectSection/ProjectSectionUI';
 import { HISTORY_BLOCK_TYPE } from '../app/ui/components/historyBlockSystem/HistorySectionInfo';
 import GenericPage from '../app/ui/commons/pageLayouts/GenericPage';
+import { ProjectAdapter } from '../app/adapters/project/ProjectAdapter';
 
 const projectlist = ({ }: {}) => {
+
+    const projectAdapter: ProjectAdapter = new ProjectAdapter();
 
     const initSections: ProjectSectionInfo[] = [
         {
@@ -43,6 +46,11 @@ const projectlist = ({ }: {}) => {
     ];
 
     const [projectSections, setProjectSections] = useState(initSections);
+
+    useEffect(() => {
+        projectAdapter.allProjectSections()
+            .then( (sections: ProjectSectionInfo[]) => setProjectSections(sections) );
+    });
 
     return (
         <GenericPage>
