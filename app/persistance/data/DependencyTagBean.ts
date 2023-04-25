@@ -1,6 +1,6 @@
 
 export type DependencyTagBean = {
-    project_name: string;
+    projectName: string;
     groupId: string;
     artifactId: string;
 }
