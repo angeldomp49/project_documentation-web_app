@@ -1,17 +1,22 @@
 
 import React, { useState } from 'react'
-import NavMenu from '../../menus/NavMenu';
-import { API_BASE_URL } from '../../../config/config';
+import { CreateProjectRequest } from './CreateProjectRequest';
+import { ProjectAdapter } from '../../../../adapters/project/ProjectAdapter';
 
 
 const CreateProjectForm = ({}: {}) => {
 
-	const [projectName, setProjectName] = useState("");
-	const [usage, setUsage] = useState("");
+	const initRequest: CreateProjectRequest = {
+		projectName: "",
+		usage: "",
+		tagInfo: {
+			groupId: "",
+			artifactId: "",
+			version: ""
+		}
+	};
 
-	const [groupId, setGroupId] = useState("");
-	const [artifactId, setArtifactId] = useState("");
-	const [lastVersion, setLastVersion] = useState("");
+	const [request, setRequest] = useState(initRequest);
 
 	return (
 		<div className="formWrapper">
@@ -20,47 +25,41 @@ const CreateProjectForm = ({}: {}) => {
 			<form method="post">
 				<div className="formGroup">
 					<label htmlFor="projectName">Nombre del proyecto:</label>
-					<input type="text" name="projectName" id="projectName" value={projectName} onChange={ (e) => setProjectName(e.target.value) } />
+					<input type="text" name="projectName" id="projectName" value={request.projectName} onChange={ (e) => setRequest({ ...request, projectName: e.target.value }) } />
 				</div>
 
 				<div className="formGroup">
 					<label htmlFor="">Usage:</label>
-					<textarea value={usage} onChange={ (e) => setUsage(e.target.value) } />
+					<textarea value={request.usage} onChange={ (e) => setRequest({...request, usage: e.target.value}) } />
 				</div>
 
 				<div className="formGroup">
 					<label htmlFor="">groupId:</label>
-					<input type="text" value={groupId} onChange={ (e) => setGroupId(e.target.value) } />
+					<input type="text" value={request.tagInfo.groupId} onChange={ (e) => setRequest({...request, tagInfo: { ...request.tagInfo, groupId: e.target.value }}) } />
 					<br/>
 
 					<label htmlFor="">artifactId:</label>
-					<input type="text" value={artifactId} onChange={ (e) => setArtifactId(e.target.value) } />
+					<input type="text" value={request.tagInfo.artifactId} onChange={ (e) => setRequest({...request, tagInfo: { ...request.tagInfo, artifactId: e.target.value }}) } />
 					<br/>
 
 					<label htmlFor="">last version:</label>
-					<input type="text" value={lastVersion} onChange={ (e) => setLastVersion(e.target.value) } />
+					<input type="text" value={request.tagInfo.version} onChange={ (e) => setRequest({...request, tagInfo: { ...request.tagInfo, version: e.target.value }}) } />
 					<br/>
 				</div>
 
-				<button type="button" onClick={ () => createProjectHandler(projectName)}>Crear proyecto</button>
+				<button type="button" onClick={ () => createProjectHandler(request)}>Crear proyecto</button>
 
 			</form>
 		</div>
 	)
-}
+};
 
-const createProjectHandler = async (projectName: string) => {
-	const response = await fetch(API_BASE_URL + "/documentation/project", {
-		method: "post",
-		headers: {
-			"Content-Type": "application/x-www-form-urlencoded"
-		},
-		body: `projectName=${projectName}`
-	});
+const createProjectHandler = async (request: CreateProjectRequest) => {
+	const adapter: ProjectAdapter = new ProjectAdapter();
 
-	const result = await response.json();
-
-	alert(result.message);
+	adapter.persistNewProject(request)
+		.then((message:string) => alert(message));
+	
 };
 
 
