@@ -2,27 +2,36 @@
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { MDBTabs, MDBTabsLink, MDBTabsItem, MDBTabsContent, MDBTabsPane } from 'mdb-react-ui-kit';
-import { useEffect, useRef, useState } from 'react';
-import { InfoDependency } from './InfoDependency';
-import { Tab } from '../symbols/Tab';
+import { useState } from 'react';
+import { TagInfo } from './TagInfo';
+import { Tab } from '../../../commons/symbols/Tab';
 
-export default function DependencyTab({ infoDependency } : { infoDependency: InfoDependency}){
+export default function DependencyTab({ infoDependency } : { infoDependency: TagInfo}){
 
     const [activeTab, setActiveTab] = useState("tab1");
-    let mavenContentRef = null;
-    let gradleContentRef = null;
 
-    if(typeof window !== "undefined"){
-        mavenContentRef = useRef(window.document.createElement('div'));
-        gradleContentRef = useRef(window.document.createElement('div'));
-    }
+    const copyDependency = (dependencyTypeId: number) => {
 
-    const copyMavenDependency = () => {
-        window.navigator['clipboard'].writeText(mavenContentRef.current.textContent);
-    };
+        let dependencyFormatedInfo = "";
 
-    const copyGradleDependency = () => {
-        window.navigator['clipboard'].writeText(gradleContentRef.current.textContent);
+        if(dependencyTypeId === 1){
+
+            dependencyFormatedInfo =  `
+            <dependency>
+                <groupId>${infoDependency.groupId}</groupId>
+                <artifactId>${infoDependency.artifactId}</artifactId>
+                <version>${infoDependency.version}</version>
+            <dependency>
+            `;
+
+        }
+        else{
+
+            dependencyFormatedInfo =  `implementation: "${infoDependency.groupId}:${infoDependency.artifactId}:${infoDependency.version}"`;
+        }
+
+        window.navigator['clipboard'].writeText(dependencyFormatedInfo);
+
     };
 
     const handleClick = newActiveTab => {
@@ -45,8 +54,8 @@ export default function DependencyTab({ infoDependency } : { infoDependency: Inf
             </MDBTabs>
 
             <MDBTabsContent>
-                <MDBTabsPane show={ activeTab == "tab1" } >
-                    <p  className='maven-dependency-content' ref={mavenContentRef}  onClick={copyMavenDependency}>
+                <MDBTabsPane style={{cursor: "pointer"}} show={ activeTab == "tab1" } onClick={ e => copyDependency(1) } >
+                    <p  className='maven-dependency-content'>
                         <Tab /><Tab />&lt;dependency&gt;<br />
                         <Tab /><Tab /><Tab /><Tab />&lt;groupId&gt;{infoDependency.groupId}&lt;/groupId&gt;<br />
                         <Tab /><Tab /><Tab /><Tab />&lt;artifactId&gt;{infoDependency.artifactId}&lt;/artifactId&gt;<br />
@@ -54,8 +63,8 @@ export default function DependencyTab({ infoDependency } : { infoDependency: Inf
                         <Tab /><Tab />&lt;/dependency&gt;<br />
                     </p>
                 </MDBTabsPane>
-                <MDBTabsPane show={ activeTab == "tab2" } >
-                    <p className='gradle-dependency-content' ref={gradleContentRef} onClick={copyGradleDependency}>
+                <MDBTabsPane style={{cursor: "pointer"}} show={ activeTab == "tab2" } onClick={ e => copyDependency(2) } >
+                    <p className='gradle-dependency-content'>
                         <Tab /><Tab />implementation '{infoDependency.groupId}:{infoDependency.artifactId}:{infoDependency.version}'<br />
                     </p>
                 </MDBTabsPane>
