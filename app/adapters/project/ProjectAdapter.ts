@@ -10,6 +10,7 @@ import { rejects } from "assert";
 import { VersionBeanConverter } from "../converters/VersionBeanConverter";
 import { VersionBean } from "../../persistance/data/VersionBean";
 import { DependencyTagConverter } from "../converters/DependencyTagConverter";
+import { ProjectConverter } from "../converters/ProjectConverter";
 
 export class ProjectAdapter{
 
@@ -18,7 +19,8 @@ export class ProjectAdapter{
         private dependencyTagPersistor: DependencyTagMapper, 
         private examplePersistor: ExampleMapper,
         private versionBeanConverter: VersionBeanConverter,
-        private dependencyTagConverter: DependencyTagConverter
+        private dependencyTagConverter: DependencyTagConverter,
+        private projectConverter: ProjectConverter
         ){}
 
     async persistNewProject(request: CreateProjectRequest): Promise<string>{
@@ -46,13 +48,7 @@ export class ProjectAdapter{
         const beans = await this.projectPersistor.all();
 
         const sections: ProjectSectionInfo[] = 
-        beans.map( (bean: ProjectHydratedBean) => ({
-            title: bean.name,
-            url: `/${bean.id}`,
-            dependencyInfo: this.dependencyTagConverter.toTagInfo(bean.dependencyTagBean, bean.versionBeans[0].versionId),
-            usageCode: bean.exampleCode,
-            historyEntries: bean.versionBeans.map( (versionBean: VersionBean) => this.versionBeanConverter.toHistorySectionInfo(versionBean))
-        }));
+            beans.map( (bean: ProjectHydratedBean) => this.projectConverter.projectHydratedBeanToSectionInfo(bean) );
 
         return sections;
 

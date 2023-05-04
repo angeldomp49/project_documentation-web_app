@@ -1,6 +1,5 @@
 import { ProjectBean } from "../data/ProjectBean";
 import { ProjectHydratedBean } from "../data/ProjectHydratedBean";
-import { HISTORY_BLOCK_TYPE } from "../../ui/components/historyBlockSystem/HistorySectionInfo";
 
 export class ProjectMapper{
 
@@ -11,34 +10,7 @@ export class ProjectMapper{
 
     async allHydrated(): Promise<ProjectHydratedBean[]>{
 
-        const projectHydrated: ProjectHydratedBean[] = [
-            {
-                name: "Property Loader",
-                id: 1,
-                exampleCode: `
-                    public class PropertyLoader{
-
-                    }
-                `,
-                dependencyTagBean: {
-                    projectName: "PropertyLoader",
-                    groupId: "org.makechtec.software",
-                    artifactId: "property-loader"
-                },
-                versionBeans: [
-                    {
-                        project_name: "PropertyLoader",
-                        detailSections: [
-                            {
-                                id: 1,
-                                type: HISTORY_BLOCK_TYPE.TEXT,
-                                payload: "some information"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ];
+        const projectHydrated: ProjectHydratedBean[] = [];
         
         return projectHydrated;
     }
