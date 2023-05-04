@@ -1,7 +1,7 @@
 
-import { ProjectBean } from "../../../app/persistance/data/ProjectBean";
-import { ProjectHydratedBean } from "../../../app/persistance/data/ProjectHydratedBean";
-import { ProjectMapper } from "../../../app/persistance/mapping/ProjectMapper";
+import { ProjectBean } from "../../../src/persistance/data/ProjectBean";
+import { ProjectHydratedBean } from "../../../src/persistance/data/ProjectHydratedBean";
+import { ProjectMapper } from "../../../src/persistance/mapping/ProjectMapper";
 
 export class MockProjectMapper extends ProjectMapper {
 

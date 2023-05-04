@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { ProjectSectionInfo } from '../app/ui/components/project/projectSection/ProjectSectionInfo';
-import ProjectSectionUI from '../app/ui/components/project/projectSection/ProjectSectionUI';
-import { HISTORY_BLOCK_TYPE } from '../app/ui/components/historyBlockSystem/HistorySectionInfo';
-import GenericPage from '../app/ui/commons/pageLayouts/GenericPage';
-import { ProjectAdapter } from '../app/adapters/project/ProjectAdapter';
-import { ProjectMapper } from '../app/persistance/mapping/ProjectMapper';
-import { DependencyTagMapper } from '../app/persistance/mapping/DependencyTagMapper';
-import { ExampleMapper } from '../app/persistance/mapping/ExampleMapper';
-import { VersionBeanConverter } from '../app/adapters/converters/VersionBeanConverter';
-import { DependencyTagConverter } from '../app/adapters/converters/DependencyTagConverter';
+import { ProjectSectionInfo } from '../src/ui/components/project/projectSection/ProjectSectionInfo';
+import ProjectSectionUI from '../src/ui/components/project/projectSection/ProjectSectionUI';
+import { HISTORY_BLOCK_TYPE } from '../src/ui/components/historyBlockSystem/HistorySectionInfo';
+import GenericPage from '../src/ui/commons/pageLayouts/GenericPage';
+import { ProjectAdapter } from '../src/adapters/project/ProjectAdapter';
+import { ProjectMapper } from '../src/persistance/mapping/ProjectMapper';
+import { DependencyTagMapper } from '../src/persistance/mapping/DependencyTagMapper';
+import { ExampleMapper } from '../src/persistance/mapping/ExampleMapper';
+import { VersionBeanConverter } from '../src/adapters/converters/VersionBeanConverter';
+import { DependencyTagConverter } from '../src/adapters/converters/DependencyTagConverter';
 
 const projectlist = ({ }: {}) => {
 

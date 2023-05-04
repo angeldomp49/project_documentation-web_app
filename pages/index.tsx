@@ -1,5 +1,5 @@
 
-import GenericPage from '../app/ui/commons/pageLayouts/GenericPage';
+import GenericPage from '../src/ui/commons/pageLayouts/GenericPage';
 
 export default function Home() {
 

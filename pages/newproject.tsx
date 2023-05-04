@@ -1,6 +1,6 @@
 import React from 'react'
-import GenericPage from '../app/ui/commons/pageLayouts/GenericPage';
-import CreateProjectForm from '../app/ui/components/project/forms/CreateProjectForm';
+import GenericPage from '../src/ui/commons/pageLayouts/GenericPage';
+import CreateProjectForm from '../src/ui/components/project/forms/CreateProjectForm';
 
 
 const newproject = ({}: {}) => {

@@ -1,8 +1,8 @@
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { Tab } from "../app/ui/commons/symbols/Tab";
-import { Cl, Cr } from "../app/ui/commons/symbols/chevrons";
-import GenericPage from '../app/ui/commons/pageLayouts/GenericPage';
+import { Tab } from "../src/ui/commons/symbols/Tab";
+import { Cl, Cr } from "../src/ui/commons/symbols/chevrons";
+import GenericPage from '../src/ui/commons/pageLayouts/GenericPage';
 
 export const Templates = () => {
     return (

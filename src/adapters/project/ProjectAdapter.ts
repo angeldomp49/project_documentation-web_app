@@ -1,15 +1,10 @@
-import { resolve } from "path";
-import { ProjectBean } from "../../persistance/data/ProjectBean";
+
 import { ProjectHydratedBean } from "../../persistance/data/ProjectHydratedBean";
 import { DependencyTagMapper } from "../../persistance/mapping/DependencyTagMapper";
 import { ExampleMapper } from "../../persistance/mapping/ExampleMapper";
 import { ProjectMapper } from "../../persistance/mapping/ProjectMapper";
 import { CreateProjectRequest } from "../../ui/components/project/forms/CreateProjectRequest";
 import { ProjectSectionInfo } from "../../ui/components/project/projectSection/ProjectSectionInfo";
-import { rejects } from "assert";
-import { VersionBeanConverter } from "../converters/VersionBeanConverter";
-import { VersionBean } from "../../persistance/data/VersionBean";
-import { DependencyTagConverter } from "../converters/DependencyTagConverter";
 import { ProjectConverter } from "../converters/ProjectConverter";
 
 export class ProjectAdapter{
@@ -18,8 +13,6 @@ export class ProjectAdapter{
         private projectPersistor: ProjectMapper, 
         private dependencyTagPersistor: DependencyTagMapper, 
         private examplePersistor: ExampleMapper,
-        private versionBeanConverter: VersionBeanConverter,
-        private dependencyTagConverter: DependencyTagConverter,
         private projectConverter: ProjectConverter
         ){}
 
