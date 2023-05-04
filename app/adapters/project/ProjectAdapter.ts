@@ -13,11 +13,13 @@ import { DependencyTagConverter } from "../converters/DependencyTagConverter";
 
 export class ProjectAdapter{
 
-    projectPersistor: ProjectMapper = new ProjectMapper();
-    dependencyTagPersistor: DependencyTagMapper = new DependencyTagMapper();
-    examplePersistor: ExampleMapper = new ExampleMapper();
-    versionBeanConverter: VersionBeanConverter = new VersionBeanConverter();
-    dependencyTagConverter: DependencyTagConverter = new DependencyTagConverter();
+    constructor(
+        private projectPersistor: ProjectMapper, 
+        private dependencyTagPersistor: DependencyTagMapper, 
+        private examplePersistor: ExampleMapper,
+        private versionBeanConverter: VersionBeanConverter,
+        private dependencyTagConverter: DependencyTagConverter
+        ){}
 
     async persistNewProject(request: CreateProjectRequest): Promise<string>{
 
