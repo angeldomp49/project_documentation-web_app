@@ -16,7 +16,7 @@ test("projectConverter",async () => {
             groupId: "org.makechtec.software",
             artifactId: "example_project"
         },
-        exampleCode: " public class App{",
+        exampleCode: "public class App{",
         versionBeans: [
             {
                 project_name: "ExampleProject",
@@ -39,6 +39,34 @@ test("projectConverter",async () => {
 
     const sectionInfo: ProjectSectionInfo = converter.projectHydratedBeanToSectionInfo(bean);
 
-    console.log(sectionInfo);
+    const expectedValue: ProjectSectionInfo = {
+        title: "ExampleProject",
+        url: "/1",
+        dependencyInfo: {
+            groupId: "org.makechtec.software",
+            artifactId: "example_project",
+            version: "1.0.0"
+        },
+        usageCode: "public class App{",
+        historyEntries: [
+            {
+                versionTag: "1.0.0",
+                blocks: [
+                    {
+                        id: 1,
+                        type: "HISTORY_BLOCK_TYPE_TEXT",
+                        payload: "some information"
+                    },
+                    {
+                        id: 1,
+                        type: "HISTORY_BLOCK_TYPE_CODE",
+                        payload: "public class SomeClass{"
+                    }
+                ]
+            }
+        ]
+    };
+
+    expect(sectionInfo).toStrictEqual(expectedValue);
 
 })

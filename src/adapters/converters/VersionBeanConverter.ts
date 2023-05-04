@@ -4,7 +4,7 @@ import { HistorySectionInfo } from "../../ui/components/historyBlockSystem/Histo
 export class VersionBeanConverter{
     toHistorySectionInfo( bean:VersionBean ): HistorySectionInfo{
         return {
-            versionTag: bean.project_name,
+            versionTag: bean.versionId,
             blocks: bean.detailSections
         };
     }

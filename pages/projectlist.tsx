@@ -9,6 +9,7 @@ import { DependencyTagMapper } from '../src/persistance/mapping/DependencyTagMap
 import { ExampleMapper } from '../src/persistance/mapping/ExampleMapper';
 import { VersionBeanConverter } from '../src/adapters/converters/VersionBeanConverter';
 import { DependencyTagConverter } from '../src/adapters/converters/DependencyTagConverter';
+import { ProjectConverter } from '../src/adapters/converters/ProjectConverter';
 
 const projectlist = ({ }: {}) => {
 
@@ -16,8 +17,10 @@ const projectlist = ({ }: {}) => {
         new ProjectMapper(),
         new DependencyTagMapper(),
         new ExampleMapper(),
-        new VersionBeanConverter(),
-        new DependencyTagConverter()
+        new ProjectConverter(
+            new DependencyTagConverter(),
+            new VersionBeanConverter()
+        )
     );
 
     const initSections: ProjectSectionInfo[] = [
