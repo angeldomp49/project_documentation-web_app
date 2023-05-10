@@ -1,8 +1,11 @@
 
+import { DependencyTagBean } from "../../persistance/data/DependencyTagBean";
+import { ExampleBean } from "../../persistance/data/ExampleBean";
 import { ProjectHydratedBean } from "../../persistance/data/ProjectHydratedBean";
 import { DependencyTagMapper } from "../../persistance/mapping/DependencyTagMapper";
 import { ExampleMapper } from "../../persistance/mapping/ExampleMapper";
 import { ProjectMapper } from "../../persistance/mapping/ProjectMapper";
+import { TagInfo } from "../../ui/components/project/dependencyTab/TagInfo";
 import { CreateProjectRequest } from "../../ui/components/project/forms/CreateProjectRequest";
 import { ProjectSectionInfo } from "../../ui/components/project/projectSection/ProjectSectionInfo";
 import { ProjectConverter } from "../converters/ProjectConverter";
@@ -38,7 +41,7 @@ export class ProjectAdapter{
     }
 
     async allProjectSections(): Promise<ProjectSectionInfo[]>{
-        const beans = await this.projectPersistor.all();
+        const beans = await this.projectPersistor.allHydrated();
 
         const sections: ProjectSectionInfo[] = 
             beans.map( (bean: ProjectHydratedBean) => this.projectConverter.projectHydratedBeanToSectionInfo(bean) );
@@ -46,4 +49,14 @@ export class ProjectAdapter{
         return sections;
 
     }
+
+    async saveExampleCode(bean: ExampleBean): Promise<void>{
+        this.examplePersistor
+    }
+
+    async saveDependencyTag(bean: DependencyTagBean): Promise<void>{
+        
+    }
+
+
 }

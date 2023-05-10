@@ -15,7 +15,7 @@ export class ProjectConverter{
     projectHydratedBeanToSectionInfo( bean: ProjectHydratedBean ): ProjectSectionInfo{
         return {
             title: bean.name,
-            url: `/${bean.id}`,
+            url: `/project/${bean.id}/edit`,
             dependencyInfo: this.dependencyTagConverter.toTagInfo(bean.dependencyTagBean, bean.versionBeans[0].versionId),
             usageCode: bean.exampleCode,
             historyEntries: bean.versionBeans.map( (versionBean: VersionBean) => this.versionBeanConverter.toHistorySectionInfo(versionBean))
