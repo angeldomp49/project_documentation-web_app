@@ -19,7 +19,7 @@ test("projectConverter",async () => {
         exampleCode: "public class App{",
         versionBeans: [
             {
-                project_name: "ExampleProject",
+                projectName: "ExampleProject",
                 versionId: "1.0.0",
                 detailSections: [
                     {
