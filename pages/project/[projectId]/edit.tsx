@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import EditExampleCodeForm from '../../../src/ui/components/project/forms/EditExampleCodeForm';
 import { ProjectAdapter } from '../../../src/adapters/project/ProjectAdapter';
@@ -9,8 +9,10 @@ import { DependencyTagMapper } from '../../../src/persistance/mapping/Dependency
 import { ExampleMapper } from '../../../src/persistance/mapping/ExampleMapper';
 import { MockProjectMapper } from '../../../test/persistance/mapping/MockProjectMapper';
 import EditDependencyTagForm from '../../../src/ui/components/project/forms/EditDependencyTagForm';
+import { ExampleBean } from '../../../src/persistance/data/ExampleBean';
+import { DependencyTagBean } from '../../../src/persistance/data/DependencyTagBean';
 
-const edit = ({}: {}) => {
+const edit = ({ }: {}) => {
 
     const router = useRouter();
     const projectAdapter: ProjectAdapter = new ProjectAdapter(
@@ -23,33 +25,48 @@ const edit = ({}: {}) => {
         )
     );
 
-  return (
-    <div>
-        <h3>Edit example Code</h3>
-        <EditExampleCodeForm 
-            projectAdapter={projectAdapter} 
-            initialExampleCode={{
-              projectName: 'TemplateFinder',
-              id: 1,
-              code: 'public class App{}'
-          }} />
+    const initialExampleCode: ExampleBean = {
+        projectName: "",
+        code: ""
+    };
+    const initialDependencyTag: DependencyTagBean = {
+        groupId: "",
+        artifactId: "",
+        projectName: ""
+    };
 
-        <br />
-        <br />
+    const [exampleCode, setExampleCode] = useState(initialExampleCode);
+    const [dependencyTag, setDependencyTag] = useState(initialDependencyTag);
 
-        <h3>Edit dependency tag</h3>
+    useEffect(() => {
+        const projectId: number = parseInt("1");
 
-          <EditDependencyTagForm 
-            projectAdapter={projectAdapter} 
-            initTagInfo={{
-              id: 1,
-              projectName: 'TemplateFinder',
-              groupId: 'org.makechtec.software',
-              artifactId: 'template-finder',
-              versionId: '1.0.0'
-          }} />
-    </div>
-  )
+        projectAdapter.findExampleCodeForProject(projectId)
+            .then((exampleCodeNew: ExampleBean) => {
+                setExampleCode(exampleCodeNew);
+            });
+
+        projectAdapter.findDependencyTagForProject(projectId)
+            .then((dependencyTagNew: DependencyTagBean) => setDependencyTag(dependencyTagNew));
+    }, []);
+
+    return (
+        <div>
+            <h3>Edit example Code</h3>
+            <EditExampleCodeForm
+                projectAdapter={projectAdapter}
+                initialExampleCode={exampleCode} />
+
+            <br />
+            <br />
+
+            <h3>Edit dependency tag</h3>
+
+            <EditDependencyTagForm
+                projectAdapter={projectAdapter}
+                initTagInfo={dependencyTag} />
+        </div>
+    )
 }
 
 export default edit

@@ -1,6 +1,6 @@
 
 export type VersionBean = {
-    project_name: string;
+    projectName: string;
     versionId?: string;
     detailSections: DetailSection[];
 };
