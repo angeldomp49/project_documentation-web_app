@@ -37,7 +37,7 @@ export class MockProjectMapper extends ProjectMapper {
                 },
                 versionBeans: [
                     {
-                        project_name: "PropertyLoader",
+                        projectName: "PropertyLoader",
                         versionId: "1.0.0",
                         detailSections: [
                             {
@@ -64,7 +64,7 @@ export class MockProjectMapper extends ProjectMapper {
                 },
                 versionBeans: [
                     {
-                        project_name: "TemplateFinder",
+                        projectName: "TemplateFinder",
                         versionId: "1.1.0",
                         detailSections: [
                             {
