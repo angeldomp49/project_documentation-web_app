@@ -10,7 +10,6 @@ const Code = ({text}: {text:string}) => {
         .replace("\n", "<br />")
         ;
 
-        console.log(result);
 
   return (
     <code dangerouslySetInnerHTML={{__html: result}} ></code>
