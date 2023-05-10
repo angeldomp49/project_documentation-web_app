@@ -1,8 +1,9 @@
 import React from 'react'
 import { HISTORY_BLOCK_TYPE, HistoryBlock, HistorySectionInfo } from './HistorySectionInfo';
 import Code from '../../commons/highLighter';
+import { IdGenerator } from '@makechtec/randomkey';
 
-const HistorySectionContent = ({info}: {info: HistorySectionInfo}) => {
+const HistorySectionContent = ({info, idGen}: {info: HistorySectionInfo, idGen: IdGenerator}) => {
   return (
     <div className="historyEntry">
         <h4>{info.versionTag}</h4>
@@ -11,9 +12,9 @@ const HistorySectionContent = ({info}: {info: HistorySectionInfo}) => {
             {info.blocks.map( (block: HistoryBlock) => {
                 
                 switch(block.type){
-                    case HISTORY_BLOCK_TYPE.TEXT: return <InnerText block={block} />;
-                    case HISTORY_BLOCK_TYPE.CODE: return <InnerCode block={block} />;
-                    case HISTORY_BLOCK_TYPE.IMAGE: return <InnerImage block={block} />;
+                    case HISTORY_BLOCK_TYPE.TEXT: return <InnerText key={idGen.generate()} block={block} />;
+                    case HISTORY_BLOCK_TYPE.CODE: return <InnerCode key={idGen.generate()} block={block} />;
+                    case HISTORY_BLOCK_TYPE.IMAGE: return <InnerImage key={idGen.generate()} block={block} />;
                     default: return <InnerText block={block} />;
                 }
 

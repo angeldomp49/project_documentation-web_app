@@ -6,9 +6,10 @@ import DependencyTab from '../dependencyTab/DependencyTabUI';
 import HistorySectionContent from '../../historyBlockSystem/HistorySectionContent';
 import { ProjectSectionInfo } from './ProjectSectionInfo';
 import { HistorySectionInfo } from '../../historyBlockSystem/HistorySectionInfo';
+import { IdGenerator } from '@makechtec/randomkey';
 
 
-const ProjectSectionUI = ({projectSectionInfo}: {projectSectionInfo: ProjectSectionInfo}) => {
+const ProjectSectionUI = ({projectSectionInfo, idGen}: {projectSectionInfo: ProjectSectionInfo, idGen: IdGenerator}) => {
 
     const [activeTab, setActiveTab] = useState("tab1");
 
@@ -50,7 +51,7 @@ const ProjectSectionUI = ({projectSectionInfo}: {projectSectionInfo: ProjectSect
                 <MDBTabsPane show={activeTab == "tab3"} >
                     {
                         projectSectionInfo.historyEntries.map( (entry: HistorySectionInfo) => 
-                            <HistorySectionContent info={entry} />
+                            <HistorySectionContent key={idGen.generate()} idGen={idGen} info={entry} />
                         )
                     }
                 </MDBTabsPane>
