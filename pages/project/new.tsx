@@ -5,8 +5,6 @@ import { DependencyTagConverter } from '../../src/adapters/converters/Dependency
 import { ProjectConverter } from '../../src/adapters/converters/ProjectConverter';
 import { VersionBeanConverter } from '../../src/adapters/converters/VersionBeanConverter';
 import { ProjectAdapter } from '../../src/adapters/project/ProjectAdapter';
-import { DependencyTagMapper } from '../../src/persistance/mapping/DependencyTagMapper';
-import { ExampleMapper } from '../../src/persistance/mapping/ExampleMapper';
 import { MockProjectMapper } from '../../test/persistance/mapping/MockProjectMapper';
 
 
@@ -14,8 +12,6 @@ const newProject = ({}: {}) => {
 
   const projectAdapter: ProjectAdapter = new ProjectAdapter(
     new MockProjectMapper(),
-    new DependencyTagMapper(),
-    new ExampleMapper(),
     new ProjectConverter(
         new DependencyTagConverter(),
         new VersionBeanConverter()

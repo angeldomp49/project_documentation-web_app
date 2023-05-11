@@ -1,5 +1,6 @@
+import { ProjectHydratedBean } from "../../src/persistance/data/ProjectHydratedBean";
 
-export const StorageCenter = {
+export const StorageCenter: {data: ProjectHydratedBean[]} = {
     data: [
         {
             name: "PropertyLoader",

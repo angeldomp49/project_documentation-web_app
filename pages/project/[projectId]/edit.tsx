@@ -5,8 +5,6 @@ import { ProjectAdapter } from '../../../src/adapters/project/ProjectAdapter';
 import { DependencyTagConverter } from '../../../src/adapters/converters/DependencyTagConverter';
 import { ProjectConverter } from '../../../src/adapters/converters/ProjectConverter';
 import { VersionBeanConverter } from '../../../src/adapters/converters/VersionBeanConverter';
-import { DependencyTagMapper } from '../../../src/persistance/mapping/DependencyTagMapper';
-import { ExampleMapper } from '../../../src/persistance/mapping/ExampleMapper';
 import { MockProjectMapper } from '../../../test/persistance/mapping/MockProjectMapper';
 import EditDependencyTagForm from '../../../src/ui/components/project/forms/EditDependencyTagForm';
 import { ExampleBean } from '../../../src/persistance/data/ExampleBean';
@@ -18,8 +16,6 @@ const edit = ({ }: {}) => {
     const router = useRouter();
     const projectAdapter: ProjectAdapter = new ProjectAdapter(
         new MockProjectMapper(),
-        new DependencyTagMapper(),
-        new ExampleMapper(),
         new ProjectConverter(
             new DependencyTagConverter(),
             new VersionBeanConverter()

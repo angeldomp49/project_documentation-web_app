@@ -2,8 +2,6 @@
 import { DependencyTagBean } from "../../persistance/data/DependencyTagBean";
 import { ExampleBean } from "../../persistance/data/ExampleBean";
 import { ProjectHydratedBean } from "../../persistance/data/ProjectHydratedBean";
-import { DependencyTagMapper } from "../../persistance/mapping/DependencyTagMapper";
-import { ExampleMapper } from "../../persistance/mapping/ExampleMapper";
 import { ProjectMapper } from "../../persistance/mapping/ProjectMapper";
 import { CreateProjectRequest } from "../../ui/components/project/forms/CreateProjectRequest";
 import { ProjectSectionInfo } from "../../ui/components/project/projectSection/ProjectSectionInfo";
@@ -13,39 +11,30 @@ export class ProjectAdapter{
 
     constructor(
         private projectPersistor: ProjectMapper, 
-        private dependencyTagPersistor: DependencyTagMapper, 
-        private examplePersistor: ExampleMapper,
         private projectConverter: ProjectConverter
         ){}
 
     async persistNewProject(request: CreateProjectRequest): Promise<string>{
 
-
-        this.projectPersistor.create(request.projectName);
-        this.dependencyTagPersistor.create({
+        await this.projectPersistor.create(request.projectName);
+        await this.projectPersistor.updateDependencyTag({
             projectName: request.projectName,
             groupId: request.tagInfo.groupId,
             artifactId: request.tagInfo.artifactId
         });
-
-        this.examplePersistor.create({
+        await this.projectPersistor.updateExampleCode({
             projectName: request.projectName,
             code: request.usage
         });
 
-        return new Promise((resolve, reject) => {
-            resolve("finished");
-        });
+        return "finished";
 
     }
 
     async allProjectSections(): Promise<ProjectSectionInfo[]>{
-        const beans = await this.projectPersistor.allHydrated();
-
-        const sections: ProjectSectionInfo[] = 
-            beans.map( (bean: ProjectHydratedBean) => this.projectConverter.projectHydratedBeanToSectionInfo(bean) );
-
-        return sections;
+ 
+        return (await this.projectPersistor.allHydrated())
+                .map( (bean: ProjectHydratedBean) => this.projectConverter.projectHydratedBeanToSectionInfo(bean) );
 
     }
 
@@ -58,11 +47,11 @@ export class ProjectAdapter{
     }
 
     async saveExampleCode(bean: ExampleBean): Promise<void>{
-        
+        await this.projectPersistor.updateExampleCode(bean);
     }
 
     async saveDependencyTag(bean: DependencyTagBean): Promise<void>{
-        
+        await this.projectPersistor.updateDependencyTag(bean);
     }
 
 
