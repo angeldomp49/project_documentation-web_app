@@ -50,25 +50,15 @@ export class ProjectAdapter{
     }
 
     async findExampleCodeForProject(id: number): Promise<ExampleBean> {
-        return {
-            projectName: 'TemplateFinder',
-            id: 1,
-            code: 'public class App{}'
-        };
+        return (await this.projectPersistor.byId(id)).exampleCode;
     }
 
     async findDependencyTagForProject(id: number): Promise<DependencyTagBean> {
-        return {
-            id: 1,
-            projectName: 'TemplateFinder',
-            groupId: 'org.makechtec.software',
-            artifactId: 'template-finder',
-            versionId: '1.0.0'
-            };
+        return (await this.projectPersistor.byId(id)).dependencyTagBean;
     }
 
     async saveExampleCode(bean: ExampleBean): Promise<void>{
-        this.examplePersistor
+        
     }
 
     async saveDependencyTag(bean: DependencyTagBean): Promise<void>{

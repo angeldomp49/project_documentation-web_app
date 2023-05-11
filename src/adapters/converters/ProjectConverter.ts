@@ -17,7 +17,7 @@ export class ProjectConverter{
             title: bean.name,
             url: `/project/${bean.id}/edit`,
             dependencyInfo: this.dependencyTagConverter.toTagInfo(bean.dependencyTagBean, bean.versionBeans[0].versionId),
-            usageCode: bean.exampleCode,
+            usageCode: bean.exampleCode.code,
             historyEntries: bean.versionBeans.map( (versionBean: VersionBean) => this.versionBeanConverter.toHistorySectionInfo(versionBean))
         }
     }

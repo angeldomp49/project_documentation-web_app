@@ -31,4 +31,8 @@ export class ProjectMapper{
 
     }
 
+    async byId(id: number): Promise<ProjectHydratedBean> {
+        return null;
+    }
+
 }
