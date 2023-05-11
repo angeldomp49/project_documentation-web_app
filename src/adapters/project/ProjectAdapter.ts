@@ -5,7 +5,6 @@ import { ProjectHydratedBean } from "../../persistance/data/ProjectHydratedBean"
 import { DependencyTagMapper } from "../../persistance/mapping/DependencyTagMapper";
 import { ExampleMapper } from "../../persistance/mapping/ExampleMapper";
 import { ProjectMapper } from "../../persistance/mapping/ProjectMapper";
-import { TagInfo } from "../../ui/components/project/dependencyTab/TagInfo";
 import { CreateProjectRequest } from "../../ui/components/project/forms/CreateProjectRequest";
 import { ProjectSectionInfo } from "../../ui/components/project/projectSection/ProjectSectionInfo";
 import { ProjectConverter } from "../converters/ProjectConverter";
@@ -48,6 +47,24 @@ export class ProjectAdapter{
 
         return sections;
 
+    }
+
+    async findExampleCodeForProject(id: number): Promise<ExampleBean> {
+        return {
+            projectName: 'TemplateFinder',
+            id: 1,
+            code: 'public class App{}'
+        };
+    }
+
+    async findDependencyTagForProject(id: number): Promise<DependencyTagBean> {
+        return {
+            id: 1,
+            projectName: 'TemplateFinder',
+            groupId: 'org.makechtec.software',
+            artifactId: 'template-finder',
+            versionId: '1.0.0'
+            };
     }
 
     async saveExampleCode(bean: ExampleBean): Promise<void>{
