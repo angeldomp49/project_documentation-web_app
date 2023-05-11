@@ -4,19 +4,16 @@ import { CreateProjectRequest } from './CreateProjectRequest';
 import { ProjectAdapter } from '../../../../adapters/project/ProjectAdapter';
 
 
-const CreateProjectForm = ({}: {}) => {
-
-	const initRequest: CreateProjectRequest = {
-		projectName: "",
-		usage: "",
-		tagInfo: {
-			groupId: "",
-			artifactId: "",
-			version: ""
-		}
-	};
+const CreateProjectForm = ({initRequest, projectAdapter}: {initRequest: CreateProjectRequest, projectAdapter: ProjectAdapter}) => {
 
 	const [request, setRequest] = useState(initRequest);
+
+	const createProjectHandler = async (request: CreateProjectRequest) => {
+	
+		projectAdapter.persistNewProject(request)
+			.then((message:string) => alert(message));
+		
+	};
 
 	return (
 		<div className="formWrapper">
@@ -53,15 +50,5 @@ const CreateProjectForm = ({}: {}) => {
 		</div>
 	)
 };
-
-const createProjectHandler = async (request: CreateProjectRequest) => {
-	const adapter: ProjectAdapter = new ProjectAdapter();
-
-	adapter.persistNewProject(request)
-		.then((message:string) => alert(message));
-	
-};
-
-
 
 export default CreateProjectForm;
