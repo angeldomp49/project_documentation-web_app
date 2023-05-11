@@ -11,6 +11,7 @@ import { MockProjectMapper } from '../../../test/persistance/mapping/MockProject
 import EditDependencyTagForm from '../../../src/ui/components/project/forms/EditDependencyTagForm';
 import { ExampleBean } from '../../../src/persistance/data/ExampleBean';
 import { DependencyTagBean } from '../../../src/persistance/data/DependencyTagBean';
+import GenericPage from '../../../src/ui/commons/pageLayouts/GenericPage';
 
 const edit = ({ }: {}) => {
 
@@ -51,7 +52,7 @@ const edit = ({ }: {}) => {
     }, []);
 
     return (
-        <div>
+        <GenericPage>
             <h3>Edit example Code</h3>
             <EditExampleCodeForm
                 projectAdapter={projectAdapter}
@@ -65,7 +66,7 @@ const edit = ({ }: {}) => {
             <EditDependencyTagForm
                 projectAdapter={projectAdapter}
                 initTagInfo={dependencyTag} />
-        </div>
+        </GenericPage>
     )
 }
 

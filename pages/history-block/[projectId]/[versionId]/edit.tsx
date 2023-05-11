@@ -2,6 +2,7 @@ import React from 'react'
 import { HistoryBlockAdapter } from '../../../../src/adapters/blockSystem/HistoryBlockAdapter';
 import EditSingleBlockForm from '../../../../src/ui/components/historyBlockSystem/forms/EditSingleBlockForm';
 import { VersionBean } from '../../../../src/persistance/data/VersionBean';
+import GenericPage from '../../../../src/ui/commons/pageLayouts/GenericPage';
 
 
 const edit = ({}:{}) => {
@@ -31,7 +32,7 @@ const edit = ({}:{}) => {
   };
 
   return (
-    <div className="" >
+    <GenericPage>
         <h3>Edit version blocks</h3>
 
         {
@@ -43,7 +44,7 @@ const edit = ({}:{}) => {
           )
         }
 
-    </div>
+    </GenericPage>
   )
 }
 

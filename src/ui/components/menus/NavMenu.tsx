@@ -6,16 +6,13 @@ const NavMenu = ({}: {}) => {
     <nav>
         <ul>
             <li>
-                <a href="/projects">Lista de proyectos</a>
+                <a href="/project">Lista de proyectos</a>
             </li>
             <li>
-                <a href="/projects/create_project">crear nuevo proyecto</a>
+                <a href="/project/new">crear nuevo proyecto</a>
             </li>
             <li>
-                <a href="/projects/create_dependency_tag">agregar etiqueta de dependencia a un proyecto</a>
-            </li>
-            <li>
-                <a href="/projects/create_version">agregar detalles de version</a>
+                <a href="/history-block/new">Nuevo bloque</a>
             </li>
         </ul>
     </nav>
