@@ -10,6 +10,9 @@ import EditDependencyTagForm from '../../../src/ui/components/project/forms/Edit
 import { ExampleBean } from '../../../src/persistance/data/ExampleBean';
 import { DependencyTagBean } from '../../../src/persistance/data/DependencyTagBean';
 import GenericPage from '../../../src/ui/commons/pageLayouts/GenericPage';
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import EmptySpace from '../../../src/ui/commons/spacing/EmptySpace';
 
 const edit = ({data}: {data: any}) => {
 
@@ -23,19 +26,27 @@ const edit = ({data}: {data: any}) => {
 
     return (
         <GenericPage>
-            <h3>Edit example Code</h3>
-            <EditExampleCodeForm
-                projectAdapter={projectAdapter}
-                initialExampleCode={data.initExampleCode} />
 
-            <br />
-            <br />
+            <EmptySpace height={4} />
+            <main className="col-6 p-2">
 
-            <h3>Edit dependency tag</h3>
+                <h3 className="mb-4">Editar código de ejemplo</h3>
 
-            <EditDependencyTagForm
-                projectAdapter={projectAdapter}
-                initTagInfo={data.initialDependencyTag} />
+                <EditExampleCodeForm
+                    projectAdapter={projectAdapter}
+                    initialExampleCode={data.initExampleCode} />
+
+                <br />
+                <br />
+
+                <h3 className="mb-4">Editar etiqueta de dependencia</h3>
+
+                <EditDependencyTagForm
+                    projectAdapter={projectAdapter}
+                    initTagInfo={data.initialDependencyTag} />
+            </main>
+            <EmptySpace height={4} />
+            
         </GenericPage>
     )
 }
