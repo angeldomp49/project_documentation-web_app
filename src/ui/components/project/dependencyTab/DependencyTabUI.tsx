@@ -32,6 +32,8 @@ export default function DependencyTab({ infoDependency } : { infoDependency: Tag
 
         window.navigator['clipboard'].writeText(dependencyFormatedInfo);
 
+        alert("copied to clipboard");
+
     };
 
     const handleClick = newActiveTab => {
