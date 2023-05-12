@@ -1,6 +1,7 @@
 
 import { DependencyTagBean } from "../../persistance/data/DependencyTagBean";
 import { ExampleBean } from "../../persistance/data/ExampleBean";
+import { ProjectBean } from "../../persistance/data/ProjectBean";
 import { ProjectHydratedBean } from "../../persistance/data/ProjectHydratedBean";
 import { ProjectMapper } from "../../persistance/mapping/ProjectMapper";
 import { CreateProjectRequest } from "../../ui/components/project/forms/CreateProjectRequest";
@@ -31,6 +32,10 @@ export class ProjectAdapter{
 
     }
 
+    async allProjectNames(): Promise<ProjectBean[]>{
+        return await this.projectPersistor.all();
+    }
+
     async allProjectSections(): Promise<ProjectSectionInfo[]>{
  
         return (await this.projectPersistor.allHydrated())
@@ -54,5 +59,8 @@ export class ProjectAdapter{
         await this.projectPersistor.updateDependencyTag(bean);
     }
 
+    async byId(id: number): Promise<ProjectHydratedBean> {
+        return await this.projectPersistor.byId(id);
+    }
 
 }

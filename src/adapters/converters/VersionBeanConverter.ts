@@ -5,7 +5,8 @@ export class VersionBeanConverter{
     toHistorySectionInfo( bean:VersionBean ): HistorySectionInfo{
         return {
             versionTag: bean.versionId,
-            blocks: bean.detailSections
+            blocks: bean.detailSections,
+            url: `/history-block/${bean.projectId}/${bean.versionId}/edit`
         };
     }
 }

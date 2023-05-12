@@ -11,9 +11,8 @@ import { ExampleBean } from '../../../src/persistance/data/ExampleBean';
 import { DependencyTagBean } from '../../../src/persistance/data/DependencyTagBean';
 import GenericPage from '../../../src/ui/commons/pageLayouts/GenericPage';
 
-const edit = ({ }: {}) => {
+const edit = ({data}: {data: any}) => {
 
-    const router = useRouter();
     const projectAdapter: ProjectAdapter = new ProjectAdapter(
         new MockProjectMapper(),
         new ProjectConverter(
@@ -22,37 +21,12 @@ const edit = ({ }: {}) => {
         )
     );
 
-    const initialExampleCode: ExampleBean = {
-        projectName: "",
-        code: ""
-    };
-    const initialDependencyTag: DependencyTagBean = {
-        groupId: "",
-        artifactId: "",
-        projectName: ""
-    };
-
-    const [exampleCode, setExampleCode] = useState(initialExampleCode);
-    const [dependencyTag, setDependencyTag] = useState(initialDependencyTag);
-
-    useEffect(() => {
-        const projectId: number = parseInt("1");
-
-        projectAdapter.findExampleCodeForProject(projectId)
-            .then((exampleCodeNew: ExampleBean) => {
-                setExampleCode(exampleCodeNew);
-            });
-
-        projectAdapter.findDependencyTagForProject(projectId)
-            .then((dependencyTagNew: DependencyTagBean) => setDependencyTag(dependencyTagNew));
-    }, []);
-
     return (
         <GenericPage>
             <h3>Edit example Code</h3>
             <EditExampleCodeForm
                 projectAdapter={projectAdapter}
-                initialExampleCode={exampleCode} />
+                initialExampleCode={data.initExampleCode} />
 
             <br />
             <br />
@@ -61,9 +35,33 @@ const edit = ({ }: {}) => {
 
             <EditDependencyTagForm
                 projectAdapter={projectAdapter}
-                initTagInfo={dependencyTag} />
+                initTagInfo={data.initialDependencyTag} />
         </GenericPage>
     )
 }
 
-export default edit
+export async function getServerSideProps(context) {
+
+
+    const projectAdapter: ProjectAdapter = new ProjectAdapter(
+        new MockProjectMapper(),
+        new ProjectConverter(
+            new DependencyTagConverter(),
+            new VersionBeanConverter()
+        )
+    );
+
+    const projectId: number = parseInt(context.params.projectId);
+
+    const initExampleCode: ExampleBean = await projectAdapter.findExampleCodeForProject(projectId);
+    const initialDependencyTag: DependencyTagBean = await projectAdapter.findDependencyTagForProject(projectId);
+
+
+   
+    return { props: { data: {
+        initExampleCode: initExampleCode,
+        initialDependencyTag: initialDependencyTag
+    } } };
+  }
+
+export default edit;

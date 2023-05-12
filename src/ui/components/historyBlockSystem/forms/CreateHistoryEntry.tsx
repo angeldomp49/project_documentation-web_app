@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { AvailableProject } from './AvailableProject';
+import { IdGenerator } from '@makechtec/randomkey';
 
 
-const CreateHistoryEntry = ({availableProjects}: {availableProjects: AvailableProject[]}) => {
+const CreateHistoryEntry = ({availableProjects, idGen}: {availableProjects: AvailableProject[], idGen: IdGenerator}) => {
 
   const [projectName, setProjectName] = useState("");
   const [versionTag, setVersionTag] = useState("");
@@ -17,7 +18,7 @@ const CreateHistoryEntry = ({availableProjects}: {availableProjects: AvailablePr
             <div className="formGroup">
                 <label htmlFor="">Proyecto:</label>
                 <select value={projectName} onChange={ (e) => setProjectName(e.target.value) } >
-                    {availableProjects.map( (project: AvailableProject) =>  <option value={project.id}>{project.name}</option> )}
+                    {availableProjects.map( (project: AvailableProject) =>  <option key={idGen.generate()} value={project.id}>{project.name}</option> )}
                 </select>
             </div>
 

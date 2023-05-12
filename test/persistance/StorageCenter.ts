@@ -16,11 +16,12 @@ export const StorageCenter: {data: ProjectHydratedBean[]} = {
             dependencyTagBean: {
                 projectName: "PropertyLoader",
                 groupId: "org.makechtec.software",
+                versionId: "1.0.0",
                 artifactId: "property-loader"
             },
             versionBeans: [
                 {
-                    projectName: "PropertyLoader",
+                    projectId: 1,
                     versionId: "1.0.0",
                     detailSections: [
                         {
@@ -46,11 +47,12 @@ export const StorageCenter: {data: ProjectHydratedBean[]} = {
             dependencyTagBean: {
                 projectName: "TemplateFinder",
                 groupId: "org.makechtec.software",
-                artifactId: "template-finder"
+                artifactId: "template-finder",
+                versionId: "1.0.0"
             },
             versionBeans: [
                 {
-                    projectName: "TemplateFinder",
+                    projectId: 2,
                     versionId: "1.1.0",
                     detailSections: [
                         {

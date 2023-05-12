@@ -6,9 +6,13 @@ import { IdGenerator } from '@makechtec/randomkey';
 const HistorySectionContent = ({info, idGen}: {info: HistorySectionInfo, idGen: IdGenerator}) => {
   return (
     <div className="historyEntry">
-        <h4>{info.versionTag}</h4>
+        <h4>
+            {info.versionTag}
+            <a type='button' href={info.url} className="btn btn-primary">edit</a>
+        </h4>
 
         <div className="historySectionContent">
+
             {info.blocks.map( (block: HistoryBlock) => {
                 
                 switch(block.type){

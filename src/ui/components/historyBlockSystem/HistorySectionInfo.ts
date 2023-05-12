@@ -2,6 +2,7 @@
 
 export type HistorySectionInfo = {
     versionTag: string;
+    url: string;
     blocks: HistoryBlock[];
 }
 

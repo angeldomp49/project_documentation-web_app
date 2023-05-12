@@ -58,11 +58,14 @@ export class MockProjectMapper extends ProjectMapper {
 
             ]
         });
+
+        console.log(StorageCenter.data);
     }
 
     async updateExampleCode(bean: ExampleBean): Promise<void> {
         const index: number = StorageCenter.data.findIndex( (projectBean:ProjectHydratedBean) => projectBean.name === bean.projectName);
         StorageCenter.data[index].exampleCode = bean;
+        console.log(StorageCenter.data);
     }
 
     async updateDependencyTag(bean: DependencyTagBean): Promise<void> {
