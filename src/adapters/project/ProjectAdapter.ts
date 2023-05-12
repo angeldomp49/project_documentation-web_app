@@ -3,6 +3,7 @@ import { DependencyTagBean } from "../../persistance/data/DependencyTagBean";
 import { ExampleBean } from "../../persistance/data/ExampleBean";
 import { ProjectBean } from "../../persistance/data/ProjectBean";
 import { ProjectHydratedBean } from "../../persistance/data/ProjectHydratedBean";
+import { DetailSection, VersionBean } from "../../persistance/data/VersionBean";
 import { ProjectMapper } from "../../persistance/mapping/ProjectMapper";
 import { CreateProjectRequest } from "../../ui/components/project/forms/CreateProjectRequest";
 import { ProjectSectionInfo } from "../../ui/components/project/projectSection/ProjectSectionInfo";
@@ -61,6 +62,10 @@ export class ProjectAdapter{
 
     async byId(id: number): Promise<ProjectHydratedBean> {
         return await this.projectPersistor.byId(id);
+    }
+
+    async saveVersionHistory(detailsBean: DetailSection, parentVersionBean: VersionBean){
+        
     }
 
 }
