@@ -3,18 +3,31 @@ import { ProjectHydratedBean } from "../../src/persistance/data/ProjectHydratedB
 export const StorageCenter: {data: ProjectHydratedBean[]} = {
     data: [
         {
-            name: "PropertyLoader",
+            name: "Property Loader",
             id: 1,
             exampleCode: {
-                projectName: "PropertyLoader",
+                projectName: "Property Loader",
                 code: `
-                public class PropertyLoader{
+                public class App{
+
+                    // first we create a property loader
+                    // then we search the property in the filename
+
+                    public static void main(String[] args){
+
+                        var loader = new PropertyLoader("filename.properties");
+
+                        var property = loader.load("property_name");
+
+                        System.out.println(property);
+
+                    }
 
                 }
             `
             },
             dependencyTagBean: {
-                projectName: "PropertyLoader",
+                projectName: "Property Loader",
                 groupId: "org.makechtec.software",
                 versionId: "1.0.0",
                 artifactId: "property-loader"

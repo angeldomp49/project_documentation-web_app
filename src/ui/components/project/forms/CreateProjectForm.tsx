@@ -22,7 +22,12 @@ const CreateProjectForm = ({initRequest, projectAdapter}: {initRequest: CreatePr
 			<form method="post">
 				<div className="formGroup">
 					<label htmlFor="projectName">Nombre del proyecto:</label>
-					<input type="text" name="projectName" id="projectName" value={request.projectName} onChange={ (e) => setRequest({ ...request, projectName: e.target.value }) } />
+					<input 
+						type="text" 
+						value={request.projectName} 
+						onChange={ (e) => setRequest({ ...request, projectName: e.target.value }) }
+						
+						/>
 				</div>
 
 				<div className="formGroup">
