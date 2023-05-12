@@ -15,12 +15,18 @@ const ProjectSectionUI = ({projectSectionInfo, idGen}: {projectSectionInfo: Proj
 
     const handleClick = (newActiveTab: string) => setActiveTab(newActiveTab);
 
+    const tabContainerStyle = {
+        borderRadius: "10px",
+        boxShadow:  "rgb(209 221 229) 8px 8px 16px, rgb(255, 255, 255) -8px -8px 16px"
+    };
+
+
     return (
         <section className="projectSection">
 
             <h3 className="projectTitle">
                 {projectSectionInfo.title} 
-                <a type='button' href={projectSectionInfo.url} className="btn btn-primary">edit</a>
+                <a type='button' href={projectSectionInfo.url} className="btn btn-link">edit</a>
             </h3>
 
             <MDBTabs>
@@ -43,17 +49,29 @@ const ProjectSectionUI = ({projectSectionInfo, idGen}: {projectSectionInfo: Proj
 
             <MDBTabsContent>
                 <MDBTabsPane show={activeTab == "tab1"} >
-                    <Code text={projectSectionInfo.usageCode} />
+                    <div 
+                        className="tab-container p-2" 
+                        style={tabContainerStyle}>
+                        <Code text={projectSectionInfo.usageCode} />
+                    </div>
                 </MDBTabsPane>
                 <MDBTabsPane show={activeTab == "tab2"} >
-                    <DependencyTab infoDependency={projectSectionInfo.dependencyInfo} />
+                    <div 
+                        className="tab-container p-2" 
+                        style={tabContainerStyle}>
+                        <DependencyTab infoDependency={projectSectionInfo.dependencyInfo} />
+                    </div>
                 </MDBTabsPane>
                 <MDBTabsPane show={activeTab == "tab3"} >
-                    {
-                        projectSectionInfo.historyEntries.map( (entry: HistorySectionInfo) => 
-                            <HistorySectionContent key={idGen.generate()} idGen={idGen} info={entry} />
-                        )
-                    }
+                    <div 
+                        className="tab-container p-2" 
+                        style={tabContainerStyle}>
+                        {
+                            projectSectionInfo.historyEntries.map( (entry: HistorySectionInfo) => 
+                                <HistorySectionContent key={idGen.generate()} idGen={idGen} info={entry} />
+                            )
+                        }
+                    </div>
                 </MDBTabsPane>
             </MDBTabsContent>
 

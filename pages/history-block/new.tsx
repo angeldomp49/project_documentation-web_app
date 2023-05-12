@@ -8,6 +8,9 @@ import { ProjectAdapter } from '../../src/adapters/project/ProjectAdapter';
 import { MockProjectMapper } from '../../test/persistance/mapping/MockProjectMapper';
 import { ProjectBean } from '../../src/persistance/data/ProjectBean';
 import { IdGenerator } from '@makechtec/randomkey';
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import EmptySpace from '../../src/ui/commons/spacing/EmptySpace';
 
 
 const newhistoricentry = ({ data }: { data: any }) => {
@@ -16,10 +19,16 @@ const newhistoricentry = ({ data }: { data: any }) => {
 
 	return (
 		<GenericPage>
-			<CreateHistoryEntry 
-				availableProjects={data.projects}
-				idGen={IdGen}
-				/>
+
+			<EmptySpace height={4} />
+			<main className="col-6">
+				<CreateHistoryEntry 
+					availableProjects={data.projects}
+					idGen={IdGen}
+					/>
+			</main>
+			<EmptySpace height={4} />
+			
 		</GenericPage>
 	)
 }

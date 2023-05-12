@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { CreateProjectRequest } from './CreateProjectRequest';
 import { ProjectAdapter } from '../../../../adapters/project/ProjectAdapter';
+import { MDBInput, MDBTextArea } from 'mdb-react-ui-kit';
 
 
 const CreateProjectForm = ({initRequest, projectAdapter}: {initRequest: CreateProjectRequest, projectAdapter: ProjectAdapter}) => {
@@ -16,40 +17,74 @@ const CreateProjectForm = ({initRequest, projectAdapter}: {initRequest: CreatePr
 	};
 
 	return (
-		<div className="formWrapper">
+		<div className="formWrapper p-2">
 
-			<h4>Crear un nuevo proyecto</h4>
-			<form method="post">
+			<h4 className="mb-4" >Crear un nuevo proyecto</h4>
+
+			<h5 className="mb-4" >Información del proyecto</h5>
+
+			<form method="post" 
+				style={{
+					width: "600px"
+				}}
+			>
 				<div className="formGroup">
-					<label htmlFor="projectName">Nombre del proyecto:</label>
-					<input 
-						type="text" 
+					<MDBInput 
+						type="text"
 						value={request.projectName} 
 						onChange={ (e) => setRequest({ ...request, projectName: e.target.value }) }
-						
+						label="Nombre del proyecto"
+						className="mb-4"
 						/>
 				</div>
 
 				<div className="formGroup">
-					<label htmlFor="">Usage:</label>
-					<textarea value={request.usage} onChange={ (e) => setRequest({...request, usage: e.target.value}) } />
+					<MDBTextArea 
+						value={request.usage} 
+						onChange={ (e) => setRequest({...request, usage: e.target.value}) } 
+						label="Usage"
+						className="mb-4"
+						/>
 				</div>
+
+				<h5 className="mb-4" >Información de la dependencia</h5>
 
 				<div className="formGroup">
-					<label htmlFor="">groupId:</label>
-					<input type="text" value={request.tagInfo.groupId} onChange={ (e) => setRequest({...request, tagInfo: { ...request.tagInfo, groupId: e.target.value }}) } />
+
+					<MDBInput 
+						type="text" 
+						value={request.tagInfo.groupId} 
+						onChange={ (e) => setRequest({...request, tagInfo: { ...request.tagInfo, groupId: e.target.value }}) } 
+						className="mb-4"
+						label="GroupId"
+						/>
 					<br/>
 
-					<label htmlFor="">artifactId:</label>
-					<input type="text" value={request.tagInfo.artifactId} onChange={ (e) => setRequest({...request, tagInfo: { ...request.tagInfo, artifactId: e.target.value }}) } />
+					<MDBInput 
+						type="text" 
+						value={request.tagInfo.artifactId} 
+						onChange={ (e) => setRequest({...request, tagInfo: { ...request.tagInfo, artifactId: e.target.value }}) } 
+						className="mb-4"
+						label="ArtifactId"
+						/>
 					<br/>
 
-					<label htmlFor="">last version:</label>
-					<input type="text" value={request.tagInfo.version} onChange={ (e) => setRequest({...request, tagInfo: { ...request.tagInfo, version: e.target.value }}) } />
+					<MDBInput 
+						type="text" 
+						value={request.tagInfo.version} 
+						onChange={ (e) => setRequest({...request, tagInfo: { ...request.tagInfo, version: e.target.value }}) } 
+						className="mb-4"
+						label="Release version"
+						/>
 					<br/>
+
 				</div>
 
-				<button type="button" onClick={ () => createProjectHandler(request)}>Crear proyecto</button>
+				<button 
+					type="button" 
+					onClick={ () => createProjectHandler(request)}
+					className="btn btn-primary"
+					>Crear proyecto</button>
 
 			</form>
 		</div>

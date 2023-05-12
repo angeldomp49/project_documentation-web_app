@@ -6,7 +6,9 @@ import { ProjectConverter } from '../../src/adapters/converters/ProjectConverter
 import { VersionBeanConverter } from '../../src/adapters/converters/VersionBeanConverter';
 import { ProjectAdapter } from '../../src/adapters/project/ProjectAdapter';
 import { MockProjectMapper } from '../../test/persistance/mapping/MockProjectMapper';
-
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import EmptySpace from '../../src/ui/commons/spacing/EmptySpace';
 
 const newProject = ({}: {}) => {
 
@@ -30,6 +32,8 @@ const newProject = ({}: {}) => {
         }
       }} 
       projectAdapter={projectAdapter} />
+
+      <EmptySpace height={4} />
     </GenericPage>
   )
 }

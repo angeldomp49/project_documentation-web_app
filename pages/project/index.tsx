@@ -8,6 +8,9 @@ import { DependencyTagConverter } from '../../src/adapters/converters/Dependency
 import { ProjectConverter } from '../../src/adapters/converters/ProjectConverter';
 import { MockProjectMapper } from '../../test/persistance/mapping/MockProjectMapper';
 import { IdGenerator } from '@makechtec/randomkey';
+import EmptySpace from '../../src/ui/commons/spacing/EmptySpace';
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const projectlist = ({}: {}) => {
 
@@ -30,14 +33,20 @@ const projectlist = ({}: {}) => {
 
     return (
         <GenericPage>
-            <main>
+            <EmptySpace height={4} />
+            <main className="col-6">
                 {
                     projectSections.map( (section: ProjectSectionInfo) => 
-                        <ProjectSectionUI 
-                            key={idGen.generate()} 
-                            projectSectionInfo={section} 
-                            idGen={idGen}
-                            />)
+                        {
+                            return (<>
+                                <ProjectSectionUI 
+                                key={idGen.generate()} 
+                                projectSectionInfo={section} 
+                                idGen={idGen}
+                                />
+                                <EmptySpace height={2} />
+                            </>)
+                        })
                 }
             </main>
         </GenericPage>

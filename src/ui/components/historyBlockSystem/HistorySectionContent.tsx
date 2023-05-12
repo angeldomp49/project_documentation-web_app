@@ -8,7 +8,7 @@ const HistorySectionContent = ({info, idGen}: {info: HistorySectionInfo, idGen: 
     <div className="historyEntry">
         <h4>
             {info.versionTag}
-            <a type='button' href={info.url} className="btn btn-primary">edit</a>
+            <a type='button' href={info.url} className="btn btn-link">edit</a>
         </h4>
 
         <div className="historySectionContent">

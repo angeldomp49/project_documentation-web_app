@@ -40,7 +40,16 @@ export const StorageCenter: {data: ProjectHydratedBean[]} = {
                         {
                             id: 1,
                             type: "HISTORY_BLOCK_TYPE_TEXT",
-                            payload: "some information"
+                            payload: "This is the release version of property loader, it contains a class that loadas a property file, then it search in the file the specified property by name, if it exists returns the optional filled or empty if not."
+                        },
+                        {
+                            id: 2,
+                            type: "HISTORY_BLOCK_TYPE_CODE",
+                            payload: `
+        public static void main(String[] args){
+            var loader = new PropertyLoader("filename.properties");
+        }
+                            `
                         }
                     ]
                 }
