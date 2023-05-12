@@ -26,5 +26,25 @@
   },
   "resolutions": {
     "react-i18next": ">=11.16.4"
-  }
+  },
+  "name": "makech_doc",
+  "description": "rutas:",
+  "version": "1.0.0",
+  "main": "pages/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angeldomp49/makech_proyect_documentation.git"
+  },
+  "keywords": [
+    "dashboard"
+  ],
+  "author": "MakechTec",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/angeldomp49/makech_proyect_documentation/issues"
+  },
+  "homepage": "https://github.com/angeldomp49/makech_proyect_documentation#readme"
 }
