@@ -4,10 +4,10 @@ import React from 'react'
 const Code = ({text}: {text:string}) => {
 
     const result = 
-    text.replace("    ", "&nbsp;&nbsp;&nbsp;&nbsp;")
+    text.replace(/ /gm, "&nbsp;")
         .replace("<", "&lt;")
         .replace(">", "&gt;")
-        .replace("\n", "<br />")
+        .replace(/\n/gm, "<br />")
         ;
 
 
